@@ -11,7 +11,7 @@
 	    http://www.springframework.org/schema/jee	   					   
 	    http://www.springframework.org/schema/jee/spring-jee.xsd">
 	   					   
-	<context:component-scan base-package="spms"></context:component-scan>
+	<context:component-scan base-package="psm"></context:component-scan>
 	
 	<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/studydb"/>
 	
@@ -21,8 +21,8 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="typeAliasesPackage" value="spms.vo"/>
-		<property name="mapperLocations" value="classpath*:spms/dao/*Dao.xml"/>
+		<property name="typeAliasesPackage" value="psm.vo"/>
+		<property name="mapperLocations" value="classpath*:psm/dao/*Dao.xml"/>
 	</bean>
 
 	

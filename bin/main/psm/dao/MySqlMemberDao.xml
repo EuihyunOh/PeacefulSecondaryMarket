@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="psm.dao.MemberDao">
+	<resultMap type="member" id="memberResultMap">
+		<id column="id" property="id"/>
+		<result column="pwd" property="password"/>
+		<result column="addr" property="address"/>
+		<result column="tname" property="tradeName"/>
+		<result column="account" property="account"/>
+		<result column="join_date" property="joinDate"/>
+	</resultMap>
+	
+	<select id="insert" parameterType="member">
+		insert into member(id,pwd,addr,tname,account,join_date)
+		values(#{id},#{password},#{address},#{tradeName},#{account},now())
+	</select>
+	
+	<select id="selectOne" parameterType="String" resultMap="memberResultMap">
+		select id,addr,tname,account,join_date
+		from member
+		where id=#{id}
+	</select>
+	
+	<update id="update" parameterType="map">
+		update members
+		<set>
+			<if test="password != null">pwd=#{password}</if>
+			<if test="address != null">addr=#{address}</if>
+			<if test="tradeName != null">tname=#{tradeName}</if>
+			<if test="account != null">account=#{account}</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="exist" parameterType="map" resultMap="memberResultMap">
+		select id,tname
+		from member
+		where id=#{id} and pwd=#{password}
+	</select>
+	
+</mapper>

@@ -15,7 +15,7 @@
 
 <div class="container">
 	
-	<form>
+	<form action="signin.do" method="post">
 		<div class="page-header">
         	<h2>Sign in</h2>
         </div>
@@ -23,14 +23,14 @@
         <div class="col-xs-6">
         <div class="form-group">
         <label for="id">ID</label>
-        <input type="text" id="id" class="form-control" placeholder="ID" required>
+        <input type="text" id="id" name="id" class="form-control" placeholder="ID" required>
         </div>
         <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" class="form-control" placeholder="Password" required>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </div>
        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign In">
         </div> <!-- /col-xs-6 -->
      </form>	 
 </div> <!--  /container  -->

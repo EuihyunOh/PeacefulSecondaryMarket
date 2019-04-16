@@ -10,7 +10,7 @@
  
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
-    <filter-class>spms.filters.CharacterEncodingFilter</filter-class>
+    <filter-class>psm.filters.CharacterEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>

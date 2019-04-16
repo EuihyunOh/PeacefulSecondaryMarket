@@ -28,7 +28,7 @@
     	</div>
   		<div class="form-group">
   		<label for="address">Address</label>
-  		<input type="text" id="email" class="form-control" placeholder="Address" required>
+  		<input type="text" id="address" class="form-control" placeholder="Address" required>
   		</div>
   		<div class="form-group">
   		<label for="nickname">Trade Name</label>
