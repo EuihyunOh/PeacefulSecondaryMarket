@@ -32,7 +32,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 			Controller pageController = (Controller)ctx.getBean(servletPath);
 			if(pageController == null) {
-				throw new Exception("요청한 서비스를 찾을 수 없습니다.");
+				throw new Exception("Cannot find requested service");
 			}
 			
 			if(pageController instanceof DataBinding) {

@@ -41,7 +41,7 @@ public class SignInController implements Controller, DataBinding {
 				session.setAttribute("member",member);
 				return "redirect:../trade/list.do";
 			}else {
-				return "/auth/LogInFail.jsp";
+				return "redirect:./LogInFail.jsp";
 			}
 		}
 	}

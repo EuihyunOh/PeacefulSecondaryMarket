@@ -18,7 +18,7 @@
      <a class="navbar-brand" href="<%=request.getContextPath()%>/index.html">Peaceful Land</a>
     </div>
       <ul class="nav navbar-nav">
-        <li><a href="#">Trade Board</a></li>
+        <li><a href="<%=request.getContextPath()%>/trade/list.do">Trade Board</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -33,7 +33,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
           <c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
-          My info 
+          Welcome! 
           </c:if>
           <c:if test="${!empty sessionScope.member and !empty sessionScope.member.id}">
           Hello ${member.tradeName}!
@@ -41,8 +41,7 @@
           <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">My Trade</a></li>
-            <li><a href="#">My Information</a></li>
-            <li><a href="#">Register Account</a></li>            
+            <li><a href="<%=request.getContextPath()%>/member/update.do">My Information</a></li>         
             <c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
             <li class="divider"></li>
             <li><a href="<%=request.getContextPath()%>/auth/signin.do">Sign In</a></li>

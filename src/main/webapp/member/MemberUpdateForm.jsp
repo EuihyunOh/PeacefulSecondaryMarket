@@ -13,30 +13,34 @@
 <jsp:include page="/Navbars.jsp"/>
 
 <div class="container">	
-	<form>
+	<form action="update.do" method="post">
 		<div class="page-header">
 			<h2>Update Information</h2>
 			</div>
 		<div class="col-xs-6">
 		<div class="form-group">
  	 	<label for="id">ID</label>
-  		<input type="text" id="id" class="form-control" value="ID" readonly>
+  		<input type="text" id="id" name="id" class="form-control" value="${member.id}" readonly>
 		</div>
 		<div class="form-group">
     	<label for="password">Password</label>
-    	<input type="password" id="password" class="form-control"  placeholder="If you want change password, fill this from" >
+    	<input type="password" id="password" name="password" class="form-control" placeholder="If you want change password, fill this fromIf you want change password, fill this from">    	
     	</div>
   		<div class="form-group">
   		<label for="address">Address</label>
-  		<input type="text" id="address" class="form-control" placeholder="Address" required>
+  		<input type="text" id="address" name="address" class="form-control" value="${member.address}" required>
   		</div>
   		<div class="form-group">
-  		<label for="nickname">Trade Name</label>
-  		<input type="text" id="tradeName" class="form-control" placeholder="Name using at Trade" required>
+  		<label for="tradeName">Trade Name</label>
+  		<input type="text" id="tradeName" name="tradeName" class="form-control" value="${member.tradeName}" required>
   		</div>
   		<div class="form-group">
   		<label for="account">Bank Account</label>
-  		<input type="text" id="account" class="form-control" placeholder="Account using at Trade" required>
+  		<input type="text" id="account" name="account" class="form-control" value="${member.account}" placeholder="Account using at Trade" required>
+  		</div>
+  		<div class="form-group">
+  		<label for="phone">Phone Number</label>
+  		<input type="text" id="phone" name="phone" class="form-control" value="${member.phone}" placeholder="Phone number for contact" required>
   		</div>
 	<button type="submit" class="btn btn-primary">Update</button>
 	<button type="button" class="btn btn-danger">Cancel</button>

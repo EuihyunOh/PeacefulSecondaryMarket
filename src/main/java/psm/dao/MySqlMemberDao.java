@@ -55,7 +55,7 @@ public class MySqlMemberDao implements MemberDao {
 			Member original = sqlSession.selectOne("psm.dao.MemberDao.selectOne",member.getId());
 			Hashtable<String, Object> paramMap = new Hashtable<String,Object>();
 			
-			if(member.getPassword()!=null) {
+			if(!member.getPassword().equals("")) {
 				if(!member.getPassword().equals(original.getPassword())) {
 					paramMap.put("password",member.getPassword());
 				}				
@@ -68,6 +68,9 @@ public class MySqlMemberDao implements MemberDao {
 			}
 			if(!member.getAccount().equals(original.getAccount())) {
 				paramMap.put("account", member.getAccount());
+			}
+			if(member.getPhone()!=original.getPhone()) {
+				paramMap.put("phone", member.getPhone());
 			}
 			if(paramMap.size()>0) {
 				paramMap.put("id",member.getId());

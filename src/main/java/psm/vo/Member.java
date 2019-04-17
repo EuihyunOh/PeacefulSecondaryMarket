@@ -9,6 +9,7 @@ public class Member {
 	protected String tradeName;
 	protected String account;
 	protected Date joinDate;
+	protected int phone;
 	
 	public String getId() {
 		return id;
@@ -50,6 +51,13 @@ public class Member {
 	}
 	public Member getJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
+		return this;
+	}
+	public int getPhone() {
+		return phone;
+	}
+	public Member setPhone(int phone) {
+		this.phone = phone;
 		return this;
 	}
 	

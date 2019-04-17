@@ -10,26 +10,28 @@
 		<result column="tname" property="tradeName"/>
 		<result column="account" property="account"/>
 		<result column="join_date" property="joinDate"/>
+		<result column="phone" property="phone"/>
 	</resultMap>
 	
 	<select id="insert" parameterType="member">
-		insert into member(id,pwd,addr,tname,account,join_date)
-		values(#{id},#{password},#{address},#{tradeName},#{account},now())
+		insert into member(id,pwd,addr,tname,account,join_date,phone)
+		values(#{id},#{password},#{address},#{tradeName},#{account},now(),#{phone})
 	</select>
 	
 	<select id="selectOne" parameterType="String" resultMap="memberResultMap">
-		select id,addr,tname,account,join_date
+		select id,addr,tname,account,join_date,phone
 		from member
 		where id=#{id}
 	</select>
 	
 	<update id="update" parameterType="map">
-		update members
+		update member
 		<set>
-			<if test="password != null">pwd=#{password}</if>
-			<if test="address != null">addr=#{address}</if>
-			<if test="tradeName != null">tname=#{tradeName}</if>
-			<if test="account != null">account=#{account}</if>
+			<if test="password != null">pwd=#{password},</if>
+			<if test="address != null">addr=#{address},</if>
+			<if test="tradeName != null">tname=#{tradeName},</if>
+			<if test="account != null">account=#{account},</if>
+			<if test="phone != null">phone=#{phone},</if>
 		</set>
 		where id=#{id}
 	</update>
