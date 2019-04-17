@@ -31,11 +31,10 @@ public class SignUpController implements Controller, DataBinding {
 		Member member = (Member)model.get("member");
 		
 		if(member.getId()==null) {
-			System.out.println("SignUpForm");
 			return "/member/SignUpForm.jsp";
 		}else {
 			memberDao.insert(member);
-			return "/trade/list.do";
+			return "redirect:../trade/list.do";
 		}
 	}
 

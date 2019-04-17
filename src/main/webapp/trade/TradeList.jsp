@@ -1,5 +1,7 @@
+<%@ page import="psm.vo.Member" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +72,12 @@
 		</tbody>
 	</table>
 	
-	<a class="btn btn-info pull-right" href="#" role="button">Write</a>
+	<c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
+  		 <a class="btn btn-info pull-right" href="<%=request.getContextPath()%>/auth/signin.do" role="button">Write</a>
+    </c:if>
+    <c:if test="${!empty sessionScope.member and !empty sessionScope.member.id}">
+  		 <a class="btn btn-info pull-right" href="write.do" role="button">Write</a>
+    </c:if>
 	<div class="text-center">
 		<ul class="pagination">
 			<li><a href="#">1</a></li>

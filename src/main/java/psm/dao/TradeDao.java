@@ -8,6 +8,8 @@ public interface TradeDao {
 	List<Trade> selectList() throws Exception;
 	int insert(Trade trade) throws Exception;
 	Trade selectOne(int no) throws Exception;
-	int update(Trade trade) throws Exception;
+	int updateContent(Trade trade) throws Exception;
+	int updateState(int no,int state) throws Exception;
+	int updateDealId(int no, String dealId) throws Exception;
 	//int delete(int no) throws Exception;
 }

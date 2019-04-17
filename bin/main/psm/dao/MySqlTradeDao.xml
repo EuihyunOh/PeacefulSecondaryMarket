@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="psm.dao.TradeDao">
+	<resultMap type="trade" id="tradeResultMap">
+		<id column="tno" property="no"/>
+		<result column="title" property="title"/>
+		<result column="cre_date" property="createDate"/>
+		<result column="id" property="id"/>
+		<result column="price" property="price"/>
+		<result column="tcon" property="condition"/>
+		<result column="state" property="state"/>
+		<result column="content" property="content"/>
+		<result column="deal_id" property="dealId"/>
+	</resultMap>
+	
+	<select id="selectList" resultMap="tradeResultMap">
+		select tno,title,cre_date,id,price,condition,state
+		from trade
+		order by tno desc
+	</select>
+	
+	<insert id="insert" parameterType="trade">
+		insert into trade(title,cre_date,id,price,tcon,state,content)
+		values(#{title},now(),#{id},#{price},#{condition},0,#{content})
+	</insert>
+	
+	<select id="selectOne" resultMap="tradeResultMap">
+		select tno,title,createDate,id,price,tcon,state,content,deal_id
+		from trade
+		where tno=#{value}
+	</select>
+	
+	<update id="updateContent" parameterType="map">
+		update trade
+		<set>
+			<if test="title != null">title=#{title},</if>
+			<if test="price != null">price=#{price},</if>
+			<if test="condition != null">tcon=#{condition},</if>
+			<if test="content != null">content=#{content},</if>
+		</set>
+		where tno=#{no}
+	</update>
+	
+	<update id="updateState" parameterType="map">
+		update trade
+		set state=#{state}
+		where tno=#{no}
+	</update>
+	
+	<update id="updateDealId" parameterType="map">
+		update trade
+		set deal_id=#{dealId}
+		where tno=cast(#{no} as unsigned int)
+	</update>
+	
+</mapper>

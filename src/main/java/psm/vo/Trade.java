@@ -6,12 +6,12 @@ public class Trade {
 	protected int no;
 	protected String title;
 	protected Date createDate;
-	protected int id;
+	protected String id;
 	protected int price;
 	protected int condition;
 	protected int state;
 	protected String content;
-	protected int dealId;
+	protected String dealId;
 	
 	public int getNo() {
 		return no;
@@ -34,10 +34,10 @@ public class Trade {
 		this.createDate = createDate;
 		return this;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public Trade setId(int id) {
+	public Trade setId(String id) {
 		this.id = id;
 		return this;
 	}
@@ -46,6 +46,13 @@ public class Trade {
 	}
 	public Trade setPrice(int price) {
 		this.price = price;
+		return this;
+	}
+	public int getCondition() {
+		return condition;
+	}
+	public Trade setCondition(int condition) {
+		this.condition = condition;
 		return this;
 	}
 	public int getState() {
@@ -58,14 +65,14 @@ public class Trade {
 	public String getContent() {
 		return content;
 	}
-	public Trade setContetnt(String content) {
+	public Trade setContent(String content) {
 		this.content = content;
 		return this;
 	}
-	public int getDealId() {
+	public String getDealId() {
 		return id;
 	}
-	public Trade setDealId(int dealId) {
+	public Trade setDealId(String dealId) {
 		this.dealId = dealId;
 		return this;
 	}
