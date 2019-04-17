@@ -1,5 +1,7 @@
+<%@ page import="psm.vo.Member" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,34 +18,55 @@
 <div class="container">
 	<table class="table table-bordered" style="width:800px">
 		<tr>
-			<th colspan="2">Title</th>
+			<th colspan="2">${trade.title}</th>
 		</tr>
 		<tr>
 			<td>Date</td>
-			<td>2019-01-01</td>
+			<td>${trade.createDate}</td>
 		</tr>
 		<tr>
 			<td>Name</td>
-			<td>사기아님</td>
+			<td>${trade.tradeName}</td>
 		</tr>
 		<tr>
-			<td>Phone</td>
-			<td>010-5555-1111</td>
+			<td>Contact</td>
+			<td>${phone}</td>
 		</tr>
 		<tr>
-			<td>Price ($)</td>
-			<td>5</td>
+			<td>Price</td>
+			<td>${trade.price} $</td>
 		</tr>
 		<tr>
 			<td>Condition</td>
-			<td>Good</td>
+			<c:choose>
+					<c:when test="${trade.condition == 0 }">
+						<td>Bad</td>
+					</c:when>
+					<c:when test="${trade.condition == 1 }">
+						<td>Not Bad</td>
+					</c:when>
+					<c:when test="${trade.condition == 2 }">
+						<td>Good</td>
+					</c:when>
+					<c:when test="${trade.condition == 3 }">
+						<td>Perfect</td>
+					</c:when>
+			</c:choose>
 		</tr>
 		<tr>
-			<td colspan="2">막내야<br>또 속았구나</td>
+			<td colspan="2">${trade.content}</td>
 		</tr>		
 	</table>
-		<button type="button" class="btn btn-info">Deal</button>
-		<button type="button" class="btn btn-danger">Back</button>
+	<c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
+            <button type="button" class="btn btn-info" onclick='location href="../auth/signin.do"'>Deal</button>
+    </c:if>
+    <c:if test="${(!empty sessionScope.member or !empty sessionScope.member.id)and(isWriter==false)}">            
+            <button type="button" class="btn btn-info" onclick='location href="#"'>Deal</button>
+    </c:if>
+    <c:if test="${(!empty sessionScope.member or !empty sessionScope.member.id)and(isWriter==true)}">            
+            <button type="button" class="btn btn-primary" onclick='location href="update.do"'>Update</button>
+    </c:if>
+		<button type="button" class="btn btn-danger" onclick="history.back(-1);">Back</button>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

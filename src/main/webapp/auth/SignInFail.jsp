@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Refresh" content="1;url=login.do">
 <title>Oops!</title>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css">
@@ -23,7 +22,7 @@
 			"Please check your Id or Password"<br>
 			 or you are not our member, please Sign Up and With Us!<br>
 		</div>
-		<a class="btn btn-primary" href="#">Go home</a>
+		<a class="btn btn-primary" href="../member/signup.do">Sign Up!</a>
 	</div>
 </div>
 </div>

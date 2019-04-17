@@ -9,7 +9,7 @@ public class Member {
 	protected String tradeName;
 	protected String account;
 	protected Date joinDate;
-	protected int phone;
+	protected String phone;
 	
 	public String getId() {
 		return id;
@@ -53,10 +53,10 @@ public class Member {
 		this.joinDate = joinDate;
 		return this;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public Member setPhone(int phone) {
+	public Member setPhone(String phone) {
 		this.phone = phone;
 		return this;
 	}

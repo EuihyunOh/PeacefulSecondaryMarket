@@ -20,63 +20,64 @@
 	<div class="page-header">
 		<h2>Peaceful Board</h2>
 	</div>
-	<table class="table table-hover">
+	<table class="table table-hover table-bordered" style="margin:10px;" >
 		<thead>
 		<tr>
-			<th>#</th>
-			<th>Condition</th>
-			<th>Title</th>
-			<th>Trader</th>
-			<th>Date</th>
-			<th>Price</th>
-			<th>State</th>
+			<th width="5%">#</th>
+			<th width="10%">Condition</th>
+			<th width="30%">Title</th>
+			<th width="10%">Trader</th>
+			<th width="25%">Date</th>
+			<th width="10%">Price</th>
+			<th width="10%">State</th>
 		</tr>
 		</thead>		
 		<tbody>
-		<tr>
-			<td>111</td>
-			<td>Perfect</td>
-			<td>안뇽</td>
-			<td>되팔이</td>
-			<td>2019.01.01</td>
-			<td>89$</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>112</td>
-			<td>Good</td>
-			<td>ㅎㅎ</td>
-			<td>사기아님</td>
-			<td>2019.01.01</td>
-			<td>9$</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>113</td>
-			<td>Not Bad</td>
-			<td>안뇽</td>
-			<td>되팔이</td>
-			<td>2019.01.01</td>
-			<td>89$</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>114</td>
-			<td>Bad</td>
-			<td>ㅎㅎ</td>
-			<td>사기아님</td>
-			<td>2019.01.01</td>
-			<td>9$</td>
-			<td>5</td>
-		</tr>
+		<c:forEach var="trade" items="${trades}">
+			<tr>
+				<td>${trade.no}</td>				
+				<c:choose>
+					<c:when test="${trade.condition == 0 }">
+						<td>Bad</td>
+					</c:when>
+					<c:when test="${trade.condition == 1 }">
+						<td>Not Bad</td>
+					</c:when>
+					<c:when test="${trade.condition == 2 }">
+						<td>Good</td>
+					</c:when>
+					<c:when test="${trade.condition == 3 }">
+						<td>Perfect</td>
+					</c:when>
+				</c:choose>
+				<td><a href="detail.do?no=${trade.no}">${trade.title}</a></td>
+				<td>${trade.tradeName}</td>
+				<td>${trade.createDate}</td>
+				<td>${trade.price} $</td>
+				<c:choose>
+					<c:when test="${trade.state==0}">
+						<td>Available</td>
+					</c:when>
+					<c:when test="${trade.state==1}">
+						<td>Processing</td>
+					</c:when>
+					<c:when test="${trade.state==2}">
+						<td>Complete</td>
+					</c:when>
+					<c:when test="${trade.state==3}">
+						<td>Dispute</td>
+					</c:when>
+				</c:choose>
+			</tr>
+		</c:forEach>
 		</tbody>
 	</table>
 	
 	<c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
-  		 <a class="btn btn-info pull-right" href="<%=request.getContextPath()%>/auth/signin.do" role="button">Write</a>
+  		 <a class="btn btn-info pull-right" href="../auth/signin.do">Write</a>
     </c:if>
     <c:if test="${!empty sessionScope.member and !empty sessionScope.member.id}">
-  		 <a class="btn btn-info pull-right" href="write.do" role="button">Write</a>
+  		  <a class="btn btn-info pull-right" href="write.do">Write</a>
     </c:if>
 	<div class="text-center">
 		<ul class="pagination">

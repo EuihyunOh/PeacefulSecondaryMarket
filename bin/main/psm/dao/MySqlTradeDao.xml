@@ -8,6 +8,7 @@
 		<result column="title" property="title"/>
 		<result column="cre_date" property="createDate"/>
 		<result column="id" property="id"/>
+		<result column="tname" property="tradeName"/>
 		<result column="price" property="price"/>
 		<result column="tcon" property="condition"/>
 		<result column="state" property="state"/>
@@ -16,18 +17,18 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="tradeResultMap">
-		select tno,title,cre_date,id,price,condition,state
+		select tno,title,cre_date,id,price,tcon,state,tname
 		from trade
 		order by tno desc
 	</select>
 	
 	<insert id="insert" parameterType="trade">
-		insert into trade(title,cre_date,id,price,tcon,state,content)
-		values(#{title},now(),#{id},#{price},#{condition},0,#{content})
+		insert into trade(title,cre_date,id,tname,price,tcon,state,content)
+		values(#{title},now(),#{id},#{tradeName},#{price},#{condition},0,#{content})
 	</insert>
 	
 	<select id="selectOne" resultMap="tradeResultMap">
-		select tno,title,createDate,id,price,tcon,state,content,deal_id
+		select tno,title,tname,cre_date,id,price,tcon,state,content,deal_id
 		from trade
 		where tno=#{value}
 	</select>

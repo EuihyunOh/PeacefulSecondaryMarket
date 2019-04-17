@@ -43,7 +43,7 @@
   		<input type="text" id="phone" name="phone" class="form-control" value="${member.phone}" placeholder="Phone number for contact" required>
   		</div>
 	<button type="submit" class="btn btn-primary">Update</button>
-	<button type="button" class="btn btn-danger">Cancel</button>
+	<button type="button" class="btn btn-danger" onclick='location.href="<%=request.getContextPath()%>/index.html"'>Cancel</button>
 		</div> <!-- /col-md-6 -->
 	</form>
 </div> <!--  /container  -->

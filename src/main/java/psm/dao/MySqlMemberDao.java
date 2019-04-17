@@ -69,7 +69,7 @@ public class MySqlMemberDao implements MemberDao {
 			if(!member.getAccount().equals(original.getAccount())) {
 				paramMap.put("account", member.getAccount());
 			}
-			if(member.getPhone()!=original.getPhone()) {
+			if(!member.getPhone().equals(original.getPhone())) {
 				paramMap.put("phone", member.getPhone());
 			}
 			if(paramMap.size()>0) {

@@ -36,12 +36,13 @@ public class SignInController implements Controller, DataBinding {
 			return "/auth/SignIn.jsp";
 		}else {
 			Member member = memberDao.exist(loginInfo.getId(), loginInfo.getPassword());
-			if(member.getId()!=null) {
+			if(member!=null) {
 				HttpSession session = (HttpSession)model.get("session");
 				session.setAttribute("member",member);
 				return "redirect:../trade/list.do";
 			}else {
-				return "redirect:./LogInFail.jsp";
+				System.out.println("fail sign in");
+				return "redirect:SignInFail.jsp";
 			}
 		}
 	}

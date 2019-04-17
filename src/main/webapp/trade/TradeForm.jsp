@@ -22,7 +22,7 @@
 		</div>
 		<div class="form-group">
 			<label for="tradeName">Name</label>
-			<input type="text" id="tradeName" class="form-control" value="${member.tradeName}" readOnly> 
+			<input type="text" id="tradeName" name="tradeName" class="form-control" value="${member.tradeName}" required> 
 		</div>
 		<div class="form-group">
 			<label for="phone">Phone</label>
@@ -59,7 +59,9 @@
 				</span>
 			</div>
 		</div>
-		<button type="button" class="btn btn-danger pull-right" style='margin-left:5px'>Cancel</button>
+		<button type="button" class="btn btn-danger pull-right" 
+			style='margin-left:5px' onclick='location.href="<%=request.getContextPath()%>/index.html"'>
+				Cancel</button>
 		<button type="submit" class="btn btn-info pull-right">Complete!</button>
 		
 		</div> <!-- /col-xs -->

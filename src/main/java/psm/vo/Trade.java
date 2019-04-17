@@ -7,7 +7,8 @@ public class Trade {
 	protected String title;
 	protected Date createDate;
 	protected String id;
-	protected int price;
+	protected String tradeName;
+	protected float price;
 	protected int condition;
 	protected int state;
 	protected String content;
@@ -41,7 +42,14 @@ public class Trade {
 		this.id = id;
 		return this;
 	}
-	public int getPrice() {
+	public String getTradeName() {
+		return tradeName;
+	}
+	public Trade setTradeName(String tradeName) {
+		this.tradeName = tradeName;
+		return this;
+	}
+	public float getPrice() {
 		return price;
 	}
 	public Trade setPrice(int price) {
