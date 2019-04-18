@@ -23,9 +23,16 @@
 	</select>
 	
 	<select id="selectOwnList" resultMap="tradeResultMap">
-		select tno,title,price,tcon,state,deal_id
+		select tno,title,id,price,tcon,state,deal_id
 		from trade
 		where id=#{id}
+		order by tno desc
+	</select>
+	
+	<select id="selectBidList" resultMap="tradeResultMap">
+		select tno,title,id,price,tcon,state,deal_id
+		from trade
+		where deal_id=#{deal_id}
 		order by tno desc
 	</select>
 	

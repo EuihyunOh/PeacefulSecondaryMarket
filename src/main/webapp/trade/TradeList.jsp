@@ -65,6 +65,9 @@
 						<td>Complete</td>
 					</c:when>
 					<c:when test="${trade.state==3}">
+						<td>On Deal</td>
+					</c:when>
+					<c:when test="${trade.state==4}">
 						<td>Dispute</td>
 					</c:when>
 				</c:choose>

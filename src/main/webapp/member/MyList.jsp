@@ -60,9 +60,12 @@
 						<td>Processing</td>
 					</c:when>
 					<c:when test="${trade.state == 2}">
-						<td>Complete</td>
+						<td>On Deal</td>
 					</c:when>
 					<c:when test="${trade.state == 3}">
+						<td>Complete</td>
+					</c:when>
+					<c:when test="${trade.state == 4}">
 						<td>Dispute</td>
 					</c:when>
 				</c:choose>
@@ -81,10 +84,13 @@
 						</td>
 					</c:when>
 					<c:when test="${trade.state==2}">
-						<td><button class="btn btn-info" disabled>Done</button></td>
+						<td><button class="btn btn-info" disabled>Pending</button></td>
 					</c:when>
 					<c:when test="${trade.state==3}">
-						<td>Dispute</td>
+						<td><button class="btn btn-info" disabled>Complete</button></td>
+					</c:when>
+					<c:when test="${trade.state==4}">
+						<td><button class="btn btn-info" disabled>Dispute</button></td>
 					</c:when>
 				</c:choose>
 				
@@ -101,8 +107,7 @@
 	
 </div> <!--  /container  -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
+<jsp:include page="/member/MyBiddingList.jsp"/>
 
 </body>
 </html>

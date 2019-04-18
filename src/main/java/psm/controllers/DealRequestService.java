@@ -33,12 +33,15 @@ MySqlTradeDao tradeDao;
 		System.out.println("DealRequest");
 		HttpSession session = (HttpSession)model.get("session");
 		Member member = (Member)session.getAttribute("member");
-		Integer no = (Integer)model.get("no");
-		String dealId = member.getId();
-		System.out.println(dealId);
 		
-		tradeDao.updateDealId(no,dealId);
-		return "redirect:../member/mylist.do";
+		if(member!=null) {
+			Integer no = (Integer)model.get("no");
+			String dealId = member.getId();
+			System.out.println(dealId);
 		
+			tradeDao.updateDealId(no,dealId);
+			return "redirect:../member/mylist.do";
+		}else
+			return "redirect:../Error.html";
 	}
 }

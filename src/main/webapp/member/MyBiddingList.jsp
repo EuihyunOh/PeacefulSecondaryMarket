@@ -25,12 +25,12 @@
 			<th width="30%">Title</th>
 			<th width="10%">Price</th>
 			<th width="10%">State</th>
-			<th width="10%">Bidder</th>
+			<th width="10%">Trader</th>
 			<th width="20%">How about you?</th>
 		</tr>
 		</thead>		
 		<tbody>
-		<c:forEach var="trade" items="${trades}">
+		<c:forEach var="trade" items="${trades2}">
 			<tr>
 				<td>${trade.no}</td>				
 				<c:choose>
@@ -57,31 +57,42 @@
 						<td>Processing</td>
 					</c:when>
 					<c:when test="${trade.state == 2}">
-						<td>Complete</td>
+						<td>On Deal</td>
 					</c:when>
 					<c:when test="${trade.state == 3}">
+						<td>Complete</td>
+					</c:when>
+					<c:when test="${trade.state == 4}">
 						<td>Dispute</td>
 					</c:when>
 				</c:choose>
-				<td>${trade.dealId}</td>
+				<td>${trade.id}</td>
 				<c:choose>
-					<c:when test="${trade.state == 0 and trade.dealId == null}">
-						<td></td>
-					</c:when>
-					<c:when test="${trade.state == 0 and trade.dealId != null}">
-						<td><a class="btn btn-info" href="../state/update.do?no=${trade.no}&state=1">Confirm</a></td>
+					<c:when test="${trade.state == 0}">
+						<td>
+						<button class="btn btn-info" disabled>Pending</button>
+						<a class="btn btn-info" href="../state/update.do?no=${trade.no}&state=0">Cancel</a>						
+						</td>
 					</c:when>
 					<c:when test="${trade.state == 1}">
 						<td>
-							<a class="btn btn-info" href="../state/update.do?no=${trade.no}&state=2">Accept</a>
-							<a class="btn btn-info" href="../state/update.do?no=${trade.no}&state=0">Decline</a>
+							<button class="btn btn-info" disabled>Confirmed</button>
 						</td>
 					</c:when>
-					<c:when test="${trade.state==2}">
-						<td><button class="btn btn-info" disabled>Done</button></td>
+					<c:when test="${trade.state == 2}">
+						<td>
+							<a class="btn btn-info" href="../state/update.do?no=${trade.no}&state=3">Complete</a>
+							<a class="btn btn-info" href="../state/update.do?no=${trade.no}&state=4">Dispute</a>	
+						</td>
 					</c:when>
-					<c:when test="${trade.state==3}">
-						<td>Dispute</td>
+					<c:when test="${trade.state == 3}">
+						<td><button class="btn btn-info" disabled>Complete</button></td>						
+					</c:when>
+					<c:when test="${trade.state == 4}">
+						<td>
+							<button class="btn btn-info" disabled>Dispute</button>
+							<a class="btn btn-info" href="../state/update.do?no=${trade.no}&state=3">Solved</a>	
+						</td>
 					</c:when>
 				</c:choose>
 				

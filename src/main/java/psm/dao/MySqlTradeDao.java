@@ -45,6 +45,19 @@ public class MySqlTradeDao implements TradeDao {
 			sqlSession.close();
 		}
 	}
+	
+	@Override
+	public List<Trade> selectBidList(String dealId) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		try {
+			
+			return sqlSession.selectList("psm.dao.TradeDao.selectBidList",dealId);
+			
+		}finally {
+			sqlSession.close();
+		}
+	}
 
 
 	@Override

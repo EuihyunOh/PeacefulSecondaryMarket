@@ -34,7 +34,8 @@ public class MemberMyListController implements Controller, DataBinding {
 		Member member =	(Member)session.getAttribute("member");
 		
 		if(member!=null) {
-		model.put("trades",tradeDao.selectOwnList(member.getId()));		
+		model.put("trades",tradeDao.selectOwnList(member.getId()));	
+		model.put("trades2",tradeDao.selectBidList(member.getId()));
 		return "/member/MyList.jsp";
 		}else {
 			return "redirect:../auth/signin.do";

@@ -38,11 +38,11 @@ public class StateUpdateService implements Controller, DataBinding{
 		Integer state = (Integer)model.get("state");
 		Trade trade = tradeDao.selectOne(no);
 		
-		if(trade.getId().equals(member.getId())) {
+		if(trade.getId().equals(member.getId())||trade.getDealId().equals(member.getId())) {
 			tradeDao.updateState(no,state);
 			return "redirect:../member/mylist.do";
 		}else {
-			return "redirect:../error.jsp";
+			return "redirect:../Error.jsp";
 		}
 		
 	}
