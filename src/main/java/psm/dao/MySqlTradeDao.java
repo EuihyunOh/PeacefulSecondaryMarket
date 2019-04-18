@@ -137,14 +137,12 @@ public class MySqlTradeDao implements TradeDao {
 	@Override
 	public int updateDealId(int no, String dealId) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		
 		Hashtable<String, String> paramMap = new Hashtable<String, String>();
 		paramMap.put("no", String.valueOf(no));
 		paramMap.put("dealId",dealId);
-		
 		try {
 			
-			int count = sqlSession.update("psm.dao.TradeDao.updatedealId",paramMap);
+			int count = sqlSession.update("psm.dao.TradeDao.updateDealId",paramMap);
 			sqlSession.commit();
 			return count;
 			

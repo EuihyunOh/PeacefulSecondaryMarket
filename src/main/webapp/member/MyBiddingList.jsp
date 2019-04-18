@@ -6,19 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Page</title>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="../resources/css/non-responsive.css">
 </head>
 <body>
 
-<jsp:include page="/Navbars.jsp"/>
-
 <div class="container">
 
 	<div class="page-header">
-		<h2>Your Items</h2>
+		<h2>Your Bidding</h2>
 	</div>
 	<table class="table table-hover table-bordered" style="margin:10px;" >
 		<thead>

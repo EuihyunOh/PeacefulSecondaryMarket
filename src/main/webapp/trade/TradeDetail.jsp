@@ -60,8 +60,18 @@
 	<c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
             <button type="button" class="btn btn-info" onclick='location.href="../auth/signin.do"'>Deal</button>
     </c:if>
-    <c:if test="${(!empty sessionScope.member or !empty sessionScope.member.id)and(isWriter==false)}">            
-            <button type="button" class="btn btn-info" onclick='location.href="#"'>Deal</button>
+    <c:if test="${(!empty sessionScope.member or !empty sessionScope.member.id)
+    				and(isWriter == false) and (trade.state == 0) }">            
+            <button type="button" class="btn btn-info" 
+            <c:choose>
+					<c:when test="${!empty sessionScope.member}">
+						onclick='location.href="../state/dealrequest.do?no=${trade.no}"'
+					</c:when>
+					<c:when test="${empty sessionScope.member}">
+						onclick='location.href="../auth/signin.do"'
+					</c:when>
+			</c:choose>            
+            >Deal</button>
     </c:if>
     <c:if test="${(!empty sessionScope.member or !empty sessionScope.member.id)and(isWriter==true)}">            
             <button type="button" class="btn btn-primary" onclick='location.href="update.do?no=${trade.no}"'>Update</button>

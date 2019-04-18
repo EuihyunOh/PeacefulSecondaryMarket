@@ -60,7 +60,7 @@
 	<update id="updateDealId" parameterType="map">
 		update trade
 		set deal_id=#{dealId}
-		where tno=cast(#{no} as unsigned int)
+		where tno=#{no}
 	</update>
 	
 </mapper>
