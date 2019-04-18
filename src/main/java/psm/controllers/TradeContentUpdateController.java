@@ -38,7 +38,7 @@ public class TradeContentUpdateController implements Controller, DataBinding {
 				"no", Integer.class
 		};
 	}
-
+	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
 		System.out.println("TradeContentUpdateController");

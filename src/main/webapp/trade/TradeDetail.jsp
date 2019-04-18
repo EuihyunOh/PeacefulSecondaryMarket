@@ -54,7 +54,7 @@
 			</c:choose>
 		</tr>
 		<tr>
-			<td colspan="2">${trade.content}</td>
+			<td colspan="2"><pre class="pre-scrollable">${trade.content}</pre></td>
 		</tr>		
 	</table>
 	<c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
