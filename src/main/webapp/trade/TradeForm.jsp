@@ -30,7 +30,7 @@
 		</div>
 		<div class="form-group">
 			<label for="price">Price ($)</label>
-			<input type="number" id="price" name="price" class="form-control" placeholder="Price" required>
+			<input type="number" step="any" id="price" name="price" class="form-control" placeholder="Price" required>
 		</div>
 		<div class="form-group">
 			<label for="condition">Condition</label>

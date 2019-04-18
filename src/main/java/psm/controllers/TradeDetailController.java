@@ -42,16 +42,14 @@ public class TradeDetailController implements Controller, DataBinding {
 
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
+		System.out.println("TradeDetailController");
 		HttpSession session = (HttpSession)model.get("session");
 		Boolean isWriter = false;
 		Integer no = (Integer)model.get("no"); //from number
 		Trade trade = tradeDao.selectOne(no);
-		System.out.println("trade get");
 		Member member = memberDao.selectOne(trade.getId()); // get id -> find phone number
 		Member signIn = (Member)session.getAttribute("member");
-		System.out.println("세션 확인");
 		if(signIn!=null) { // is there user in session?
-			System.out.println("필자 확인");
 			isWriter = signIn.getId().equals(trade.getId()); // is writer? if right, show update instead of deal
 		}
 		

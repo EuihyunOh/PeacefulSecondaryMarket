@@ -52,7 +52,7 @@ public class Trade {
 	public float getPrice() {
 		return price;
 	}
-	public Trade setPrice(int price) {
+	public Trade setPrice(float price) {
 		this.price = price;
 		return this;
 	}
@@ -78,7 +78,7 @@ public class Trade {
 		return this;
 	}
 	public String getDealId() {
-		return id;
+		return dealId;
 	}
 	public Trade setDealId(String dealId) {
 		this.dealId = dealId;

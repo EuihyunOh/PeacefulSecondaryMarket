@@ -22,7 +22,7 @@
 			"Something worng happened. Please contact CS center"<br><br>
 			CS@peaceful-land.com
 		</div>
-		<a class="btn btn-primary" href="list.do">Go home</a>
+		<a class="btn btn-primary" href="<%=request.getContextPath()%>/index.html">Go home</a>
 	</div>
 </div>
 </div>

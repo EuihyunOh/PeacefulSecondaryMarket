@@ -58,15 +58,15 @@
 		</tr>		
 	</table>
 	<c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
-            <button type="button" class="btn btn-info" onclick='location href="../auth/signin.do"'>Deal</button>
+            <button type="button" class="btn btn-info" onclick='location.href="../auth/signin.do"'>Deal</button>
     </c:if>
     <c:if test="${(!empty sessionScope.member or !empty sessionScope.member.id)and(isWriter==false)}">            
-            <button type="button" class="btn btn-info" onclick='location href="#"'>Deal</button>
+            <button type="button" class="btn btn-info" onclick='location.href="#"'>Deal</button>
     </c:if>
     <c:if test="${(!empty sessionScope.member or !empty sessionScope.member.id)and(isWriter==true)}">            
-            <button type="button" class="btn btn-primary" onclick='location href="update.do"'>Update</button>
+            <button type="button" class="btn btn-primary" onclick='location.href="update.do?no=${trade.no}"'>Update</button>
     </c:if>
-		<button type="button" class="btn btn-danger" onclick="history.back(-1);">Back</button>
+		<button type="button" class="btn btn-danger" onclick='location.href="<%=request.getContextPath()%>/index.html"'>Back</button>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

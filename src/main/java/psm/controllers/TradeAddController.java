@@ -40,6 +40,7 @@ public class TradeAddController implements Controller, DataBinding {
 
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
+		System.out.println("TradeAddController");
 		HttpSession session = (HttpSession)model.get("session");
 		Trade trade = (Trade)model.get("trade");
 		Member member = (Member)session.getAttribute("member");

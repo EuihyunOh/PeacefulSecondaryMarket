@@ -1,5 +1,7 @@
+<%@ page import="psm.vo.Member" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,8 @@
 <jsp:include page="/Navbars.jsp"/>
 
 <div class="container">
-	<form class="form-horizontal" action="write.do" method="post">
+	<form class="form-horizontal" action="update.do" method="post">
+		<input class="sr-only" type="number" name="no" value="${no}">
 		<div class="col-xs-6">
 		<div class="form-group">	
 			<label for="title">Title</label>
@@ -26,24 +29,24 @@
 		</div>
 		<div class="form-group">
 			<label for="phone">Phone</label>
-			<input type="text" id="phone" class="form-control" value="${phone}" placeholder="Please regist your number" required readOnly> 
+			<input type="text" id="phone" class="form-control" placeholder="Please regist your number" value="${phone}" required readOnly> 
 		</div>
 		<div class="form-group">
 			<label for="price">Price ($)</label>
-			<input type="number" id="price" name="price" class="form-control" placeholder="Price" value="${trade.price}" required>
+			<input type="number" step="any" id="price" name="price" class="form-control" placeholder="Price" value="${trade.price}" required>
 		</div>
 		<div class="form-group">
 			<label for="condition">Condition</label>
 			<select class="form-control" id="condition" name="condition">
-				<option value="3">Perfect</option>
-				<option value="2">Good</option>
-				<option value="1">Not Bad</option>
-				<option value="0">Bad</option>
+				<option value="3" <c:if test="${trade.condition == 3}">selected</c:if>>Perfect</option>
+				<option value="2" <c:if test="${trade.condition == 2}">selected</c:if>>Good</option>
+				<option value="1" <c:if test="${trade.condition == 1}">selected</c:if>>Not Bad</option>
+				<option value="0" <c:if test="${trade.condition == 0}">selected</c:if>>Bad</option>
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="content">Detail</label>
-			<textarea id="content" name="content" rows="30" class="form-control" placeholder="Write detail" required></textarea>
+			<textarea id="content" name="content" rows="30" class="form-control" placeholder="Write detail" required>${trade.content}</textarea>
 		</div>
 		<div class="form-group">
 			<label for="InputSubject1">Attach</label>
@@ -60,7 +63,7 @@
 			</div>
 		</div>
 		<button type="button" class="btn btn-danger pull-right" 
-			style='margin-left:5px' onclick='location.href="<%=request.getContextPath()%>/index.html"'>
+			style='margin-left:5px' onclick="history.back(-1)">
 				Cancel</button>
 		<button type="submit" class="btn btn-info pull-right">Complete!</button>
 		

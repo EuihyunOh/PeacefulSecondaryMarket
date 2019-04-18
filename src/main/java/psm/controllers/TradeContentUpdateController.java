@@ -2,7 +2,10 @@ package psm.controllers;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import psm.bind.DataBinding;
 import psm.dao.MySqlMemberDao;
@@ -10,6 +13,7 @@ import psm.dao.MySqlTradeDao;
 import psm.vo.Member;
 import psm.vo.Trade;
 
+@Component("/trade/update.do")
 public class TradeContentUpdateController implements Controller, DataBinding {
 	MySqlTradeDao tradeDao;
 	MySqlMemberDao memberDao;
@@ -20,6 +24,7 @@ public class TradeContentUpdateController implements Controller, DataBinding {
 		return this;
 	}
 	
+	@Autowired
 	public TradeContentUpdateController setMemberDao(MySqlMemberDao memberDao) {
 		this.memberDao = memberDao;
 		return this;
@@ -29,21 +34,33 @@ public class TradeContentUpdateController implements Controller, DataBinding {
 	public Object[] getDataBinders() {
 		return new Object[] {
 				"trade", psm.vo.Trade.class,
-				"member", psm.vo.Member.class
+				"phone", String.class,
+				"no", Integer.class
 		};
 	}
 
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		
+		System.out.println("TradeContentUpdateController");
+		HttpSession session = (HttpSession)model.get("session");
+		Integer no = (Integer)model.get("no");
+		Trade origin = tradeDao.selectOne(no);
 		Trade trade = (Trade)model.get("trade");
-		Member member = (Member)model.get("member");
+		Member member = (Member)session.getAttribute("member");
 		
-		if(trade.getTitle()==null) {
-			return "/trade/TradeForm.jsp";
+		if(member.getId().equals(origin.getId())) { // prevent access from url
+			System.out.println("pass");
+			if(trade.getTitle()==null) {			
+				
+				model.put("phone", member.getPhone());
+				model.put("trade", origin);
+				return "/trade/TradeUpdate.jsp";
+			}else {
+				tradeDao.updateContent(trade);
+				return "redirect:detail.do?no="+String.valueOf(no);
+			}
 		}else {
-			tradeDao.insert(trade);
-			return "redirect:list.do";
+			return "redirect:../Error.jsp";
 		}
 	}
 

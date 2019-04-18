@@ -6,6 +6,7 @@ import psm.vo.Trade;
 
 public interface TradeDao {
 	List<Trade> selectList() throws Exception;
+	List<Trade> selectOwnList(String id) throws Exception;
 	int insert(Trade trade) throws Exception;
 	Trade selectOne(int no) throws Exception;
 	int updateContent(Trade trade) throws Exception;

@@ -40,7 +40,7 @@
           </c:if>
           <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">My Trade</a></li>
+            <li><a href="<%=request.getContextPath()%>/member/mylist.do">My Trade</a></li>
             <li><a href="<%=request.getContextPath()%>/member/update.do">My Information</a></li>         
             <c:if test="${empty sessionScope.member or empty sessionScope.member.id}">
             <li class="divider"></li>

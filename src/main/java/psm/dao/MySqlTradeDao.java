@@ -32,6 +32,20 @@ public class MySqlTradeDao implements TradeDao {
 		}
 		
 	}
+	
+	@Override
+	public List<Trade> selectOwnList(String id) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		try {
+			
+			return sqlSession.selectList("psm.dao.TradeDao.selectOwnList",id);
+			
+		}finally {
+			sqlSession.close();
+		}
+	}
+
 
 	@Override
 	public int insert(Trade trade) throws Exception {
@@ -74,9 +88,12 @@ public class MySqlTradeDao implements TradeDao {
 			if(!trade.getTitle().equals(original.getTitle())) {
 				paramMap.put("title", trade.getTitle());
 			}
+			if(trade.getTradeName()!=original.getTradeName()) {
+				paramMap.put("tradeName", trade.getTradeName());
+			}
 			if(trade.getPrice()!=original.getPrice()) {
 				paramMap.put("price", trade.getPrice());
-			}
+			}			
 			if(trade.getCondition()!=original.getCondition()) {
 				paramMap.put("condition", trade.getCondition());
 			}
@@ -135,5 +152,6 @@ public class MySqlTradeDao implements TradeDao {
 			sqlSession.close();
 		}
 	}
+
 
 }
