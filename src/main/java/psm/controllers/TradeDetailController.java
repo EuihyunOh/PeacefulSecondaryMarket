@@ -42,7 +42,6 @@ public class TradeDetailController implements PsmController, DataBinding {
 	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		System.out.println("TradeDetailController");
 		HttpSession session = (HttpSession)model.get("session");
 		Boolean isWriter = false;
 		Integer no = (Integer)model.get("no"); //from number

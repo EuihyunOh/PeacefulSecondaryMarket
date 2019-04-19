@@ -23,18 +23,20 @@
 		limit #{pageStart},#{rows}
 	</select>
 	
-	<select id="selectOwnList" resultMap="tradeResultMap">
+	<select id="selectOwnList" parameterType="map" resultMap="tradeResultMap">
 		select tno,title,id,price,tcon,state,deal_id
 		from trade
 		where id=#{id}
 		order by tno desc
+		limit #{pageStart},#{rows}
 	</select>
 	
-	<select id="selectBidList" resultMap="tradeResultMap">
+	<select id="selectBidList" parameterType="map" resultMap="tradeResultMap">
 		select tno,title,id,price,tcon,state,deal_id
 		from trade
 		where deal_id=#{deal_id}
 		order by tno desc
+		limit #{pageStart},#{rows}
 	</select>
 	
 	<insert id="insert" parameterType="trade">

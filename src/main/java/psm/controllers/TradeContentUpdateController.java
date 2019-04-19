@@ -41,7 +41,6 @@ public class TradeContentUpdateController implements PsmController, DataBinding 
 	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		System.out.println("TradeContentUpdateController");
 		HttpSession session = (HttpSession)model.get("session");
 		Integer no = (Integer)model.get("no");
 		Trade origin = tradeDao.selectOne(no);

@@ -23,22 +23,21 @@ public class TradeListController implements PsmController, DataBinding {
 	public Object[] getDataBinders() {
 		return new Object[] {
 				"trade",psm.vo.Trade.class,
-				"pageNo", String.class
+				"no", String.class
 		};
 	}
 	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		System.out.println("TradeListController");
 		PageCriteria page = new PageCriteria();
-		
-		if(model.get("pageNo")!="" && model.get("pageNo")!=null) {
-			System.out.println("잡아옴");
-			Integer pageNo = Integer.parseInt((String)model.get("pageNo"));
+		if(model.get("no")!="" && model.get("no")!=null) {
+			Integer pageNo = Integer.parseInt((String)model.get("no"));
 			page.setPage(pageNo);
-		}
-		
+			page.setPaginationStart(pageNo);
+			System.out.println(page.getPaginationStart());
+		}		
 		model.put("trades",tradeDao.selectList(page));
+		model.put("no", page);
 		return "/trade/TradeList.jsp";
 	}
 

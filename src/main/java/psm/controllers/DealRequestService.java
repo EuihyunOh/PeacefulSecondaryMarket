@@ -30,7 +30,6 @@ MySqlTradeDao tradeDao;
 	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		System.out.println("DealRequest");
 		HttpSession session = (HttpSession)model.get("session");
 		Member member = (Member)session.getAttribute("member");
 		

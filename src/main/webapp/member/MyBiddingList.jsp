@@ -103,7 +103,20 @@
 	
 	<div class="text-center">
 		<ul class="pagination">
-			<li><a href="#">1</a></li>
+			<c:choose>
+				<c:when test="${t2.paginationStart == 1}">
+					<li class="page-item"><a class="page-link">Previous</a></li>		
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="mylist.do?t1=${t1.paginationStart}&t2=${t2.paginationStart-1}">Previous</a></li>								
+				</c:otherwise>
+			</c:choose>
+			<li class="page-item <c:if test="${t2.paginationStart == t2.page}">active</c:if>"><a class="page-link" href="mylist.do?t1=${t1.paginationStart}&t2=${t2.paginationStart}">${t2.paginationStart}</a></li>
+			<li class="page-item <c:if test="${t2.paginationStart+1 == t2.page}">active</c:if>"><a class="page-link" href="mylist.do?t1=${t1.paginationStart}&t2=${t2.paginationStart+1}">${t2.paginationStart+1}</a></li>
+			<li class="page-item <c:if test="${t2.paginationStart+2 == t2.page}">active</c:if>"><a class="page-link" href="mylist.do?t1=${t1.paginationStart}&t2=${t2.paginationStart+2}">${t2.paginationStart+2}</a></li>
+			<li class="page-item <c:if test="${t2.paginationStart+3 == t2.page}">active</c:if>"><a class="page-link" href="mylist.do?t1=${t1.paginationStart}&t2=${t2.paginationStart+3}">${t2.paginationStart+3}</a></li>
+			<li class="page-item <c:if test="${t2.paginationStart+4 == t2.page}">active</c:if>"><a class="page-link" href="mylist.do?t1=${t1.paginationStart}&t2=${t2.paginationStart+4}">${t2.paginationStart+4}</a></li>
+			<li class="page-item"><a class="page-link" href="mylist.do?t1=${t1.paginationStart}&t2=${t2.paginationStart+5}">Next</a></li>
 		</ul>
 	</div>
 	

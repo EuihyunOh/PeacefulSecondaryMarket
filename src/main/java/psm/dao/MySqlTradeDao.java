@@ -35,12 +35,16 @@ public class MySqlTradeDao implements TradeDao {
 	}
 	
 	@Override
-	public List<Trade> selectOwnList(String id) throws Exception {
+	public List<Trade> selectOwnList(String id, PageCriteria page) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Hashtable<String,Object> paramMap = new Hashtable<String,Object>();
 		
 		try {
 			
-			return sqlSession.selectList("psm.dao.TradeDao.selectOwnList",id);
+			paramMap.put("id", id);
+			paramMap.put("pageStart", page.getPageStart());
+			paramMap.put("rows",page.getRows());
+			return sqlSession.selectList("psm.dao.TradeDao.selectOwnList",paramMap);
 			
 		}finally {
 			sqlSession.close();
@@ -48,12 +52,16 @@ public class MySqlTradeDao implements TradeDao {
 	}
 	
 	@Override
-	public List<Trade> selectBidList(String dealId) throws Exception {
+	public List<Trade> selectBidList(String dealId, PageCriteria page) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Hashtable<String,Object> paramMap = new Hashtable<String,Object>();
 		
 		try {
 			
-			return sqlSession.selectList("psm.dao.TradeDao.selectBidList",dealId);
+			paramMap.put("dealId", dealId);
+			paramMap.put("pageStart", page.getPageStart());
+			paramMap.put("rows",page.getRows());
+			return sqlSession.selectList("psm.dao.TradeDao.selectBidList",paramMap);
 			
 		}finally {
 			sqlSession.close();

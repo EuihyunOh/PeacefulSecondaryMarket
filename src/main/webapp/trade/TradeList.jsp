@@ -84,7 +84,20 @@
     </c:if>
 	<div class="text-center">
 		<ul class="pagination">
-			<li><a href="#">1</a></li>
+			<c:choose>
+				<c:when test="${no.paginationStart == 1}">
+					<li class="page-item"><a class="page-link">Previous</a></li>		
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="list.do?no=${no.paginationStart-1}">Previous</a></li>								
+				</c:otherwise>
+			</c:choose>
+			<li class="page-item <c:if test="${no.paginationStart == no.page}">active</c:if>"><a class="page-link" href="list.do?no=${no.paginationStart}">${no.paginationStart}</a></li>
+			<li class="page-item <c:if test="${no.paginationStart+1 == no.page}">active</c:if>" ><a class="page-link" href="list.do?no=${no.paginationStart+1}">${no.paginationStart+1}</a></li>
+			<li class="page-item <c:if test="${no.paginationStart+2 == no.page}">active</c:if>" ><a class="page-link" href="list.do?no=${no.paginationStart+2}">${no.paginationStart+2}</a></li>
+			<li class="page-item <c:if test="${no.paginationStart+3 == no.page}">active</c:if>" ><a class="page-link" href="list.do?no=${no.paginationStart+3}">${no.paginationStart+3}</a></li>
+			<li class="page-item <c:if test="${no.paginationStart+4 == no.page}">active</c:if>" ><a class="page-link" href="list.do?no=${no.paginationStart+4}">${no.paginationStart+4}</a></li>
+			<li class="page-item"><a class="page-link" href="list.do?no=${no.paginationStart+5}">Next</a></li>
 		</ul>
 	</div>
 	
