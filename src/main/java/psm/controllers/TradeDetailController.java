@@ -14,7 +14,7 @@ import psm.vo.Member;
 import psm.vo.Trade;
 
 @Component("/trade/detail.do")
-public class TradeDetailController implements Controller, DataBinding {
+public class TradeDetailController implements PsmController, DataBinding {
 	MySqlTradeDao tradeDao;
 	MySqlMemberDao memberDao;
 	

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Component;
 
 @Component("/auth/signout.do")
-public class SignOutController implements Controller {
+public class SignOutController implements PsmController {
 	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {

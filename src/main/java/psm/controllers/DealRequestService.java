@@ -12,7 +12,7 @@ import psm.dao.MySqlTradeDao;
 import psm.vo.Member;
 
 @Component("/state/dealrequest.do")
-public class DealRequestService implements Controller, DataBinding {
+public class DealRequestService implements PsmController, DataBinding {
 MySqlTradeDao tradeDao;
 	
 	@Autowired

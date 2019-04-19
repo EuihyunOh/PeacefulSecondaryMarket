@@ -14,7 +14,7 @@ import org.springframework.context.ApplicationContext;
 
 import psm.bind.DataBinding;
 import psm.bind.ServletRequestDataBinder;
-import psm.controllers.Controller;
+import psm.controllers.PsmController;
 import psm.listeners.ContextLoaderListener;
 
 @SuppressWarnings("serial")
@@ -30,7 +30,7 @@ public class DispatcherServlet extends HttpServlet {
 			HashMap<String,Object> model = new HashMap<String,Object>();
 			model.put("session", request.getSession());
 			
-			Controller pageController = (Controller)ctx.getBean(servletPath);
+			PsmController pageController = (PsmController)ctx.getBean(servletPath);
 			if(pageController == null) {
 				throw new Exception("Cannot find requested service");
 			}

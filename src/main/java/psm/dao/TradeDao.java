@@ -2,10 +2,11 @@ package psm.dao;
 
 import java.util.List;
 
+import psm.commons.PageCriteria;
 import psm.vo.Trade;
 
 public interface TradeDao {
-	List<Trade> selectList() throws Exception;
+	List<Trade> selectList(PageCriteria page) throws Exception;
 	List<Trade> selectOwnList(String id) throws Exception;
 	List<Trade> selectBidList(String dealId) throws Exception;
 	int insert(Trade trade) throws Exception;

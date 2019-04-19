@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import psm.commons.PageCriteria;
 import psm.vo.Trade;
 
 @Repository("TradeDao")
@@ -20,12 +21,12 @@ public class MySqlTradeDao implements TradeDao {
 	}
 	
 	@Override
-	public List<Trade> selectList() throws Exception {
+	public List<Trade> selectList(PageCriteria page) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		try {
-			
-			return sqlSession.selectList("psm.dao.TradeDao.selectList");
+						
+			return sqlSession.selectList("psm.dao.TradeDao.selectList", page);
 			
 		}finally {
 			sqlSession.close();

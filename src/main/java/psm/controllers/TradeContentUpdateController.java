@@ -14,7 +14,7 @@ import psm.vo.Member;
 import psm.vo.Trade;
 
 @Component("/trade/update.do")
-public class TradeContentUpdateController implements Controller, DataBinding {
+public class TradeContentUpdateController implements PsmController, DataBinding {
 	MySqlTradeDao tradeDao;
 	MySqlMemberDao memberDao;
 	

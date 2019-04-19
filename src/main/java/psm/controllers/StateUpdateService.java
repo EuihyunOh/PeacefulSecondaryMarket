@@ -13,7 +13,7 @@ import psm.vo.Member;
 import psm.vo.Trade;
 
 @Component("/state/update.do")
-public class StateUpdateService implements Controller, DataBinding{
+public class StateUpdateService implements PsmController, DataBinding{
 	MySqlTradeDao tradeDao;
 	
 	@Autowired

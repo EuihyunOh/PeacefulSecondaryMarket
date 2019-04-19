@@ -10,7 +10,7 @@ import psm.dao.MySqlMemberDao;
 import psm.vo.Member;
 
 @Component("/member/signup.do")
-public class SignUpController implements Controller, DataBinding {
+public class SignUpController implements PsmController, DataBinding {
 	MySqlMemberDao memberDao;
 	
 	@Autowired

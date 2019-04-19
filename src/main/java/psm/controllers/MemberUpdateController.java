@@ -12,7 +12,7 @@ import psm.dao.MySqlMemberDao;
 import psm.vo.Member;
 
 @Component("/member/update.do")
-public class MemberUpdateController implements Controller, DataBinding {
+public class MemberUpdateController implements PsmController, DataBinding {
 	MySqlMemberDao memberDao;
 	
 	@Autowired
