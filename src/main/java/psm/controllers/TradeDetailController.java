@@ -54,7 +54,7 @@ public class TradeDetailController implements PsmController, DataBinding {
 		
 		model.put("isWriter", isWriter);
 		model.put("trade", trade);
-		model.put("phone",member.getPhone());
+		model.put("member",member);
 		return "/trade/TradeDetail.jsp";
 	}
 

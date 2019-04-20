@@ -1,11 +1,17 @@
 package psm.controllers;
 
+import java.io.File;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import psm.bind.DataBinding;
 import psm.dao.MySqlMemberDao;
@@ -34,10 +40,12 @@ public class TradeAddController implements PsmController, DataBinding {
 	public Object[] getDataBinders() {
 		return new Object[] {
 				"trade", psm.vo.Trade.class,
-				"member", psm.vo.Member.class
+				"member", psm.vo.Member.class,
+				"attach", psm.vo.Attach.class
 		};
 	}
-
+	
+	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
 		HttpSession session = (HttpSession)model.get("session");
@@ -45,10 +53,14 @@ public class TradeAddController implements PsmController, DataBinding {
 		Member member = (Member)session.getAttribute("member");
 		trade.setId(member.getId());
 		
-		if(trade.getTitle()==null) {
-			model.put("member", memberDao.selectOne(member.getId()));			
+		
+		if(trade.getTitle()==null) { // show form
+			
+			model.put("member", memberDao.selectOne(member.getId()));	
+			
 			return "/trade/TradeForm.jsp";
-		}else {
+			
+		}else {			
 			tradeDao.insert(trade);
 			return "redirect:list.do";
 		}

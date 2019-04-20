@@ -30,7 +30,7 @@
 		</tr>
 		<tr>
 			<td>Contact</td>
-			<td>${phone}</td>
+			<td>${member.phone}</td>
 		</tr>
 		<tr>
 			<td>Price</td>

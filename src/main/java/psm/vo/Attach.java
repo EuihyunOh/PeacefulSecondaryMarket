@@ -3,6 +3,7 @@ package psm.vo;
 public class Attach {
 	protected int fileNo;
 	protected int tradeNo;
+	protected String fileName;
 	
 	public int getFileNo() {
 		return fileNo;
@@ -16,6 +17,13 @@ public class Attach {
 	}
 	public Attach setTradeNo(int tradeNo) {
 		this.tradeNo = tradeNo;
+		return this;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public Attach setFileName(String fileName) {
+		this.fileName = fileName;
 		return this;
 	}
 }

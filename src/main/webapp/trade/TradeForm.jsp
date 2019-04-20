@@ -45,20 +45,7 @@
 			<label for="content">Detail</label>
 			<textarea id="content" name="content" rows="30" class="form-control" placeholder="Write detail" required></textarea>
 		</div>
-		<div class="form-group">
-			<label for="InputSubject1">Attach</label>
-			<input id="fileInput" class="filestyle" type="file" 
-				data-class-button="btn btn-default" data-class-input="form-control" data-button-text="" data-icon-name="glyphicon glyphicon-upload" 
-				class="form-control" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-			<div class="bootstrap-filestyle input-group">
-				<input type="text" id="userfile" class="form-control" name="userfile" disabled>
-				<span class="group-span-filestyle input-group-btn" tabindex="0">
-					<label for="fileInput" class="btn btn-default ">
-						<span class="glyphicon glyphicon-upload"></span>
-					</label>
-				</span>
-			</div>
-		</div>
+
 		<button type="button" class="btn btn-danger pull-right" 
 			style='margin-left:5px' onclick='location.href="<%=request.getContextPath()%>/index.html"'>
 				Cancel</button>
@@ -68,20 +55,6 @@
 	</form>
 </div>
 
-
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#fileInput").on('change', function(){  // if change val
-		if(window.FileReader){  // modern browser
-			var filename = $(this)[0].files[0].name;
-		} else {  // old IE
-			var filename = $(this).val().split('/').pop().split('\\').pop();  // get file name
-		}
-		// input filename
-		$("#userfile").val(filename);
-	});
-});
-</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
