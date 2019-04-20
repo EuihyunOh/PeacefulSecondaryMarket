@@ -7,4 +7,4 @@ Environment : Java 1.8 // Apache Tomcat 7.0 // servlet 3.0
 Concept : Web secondary market (based on MVC)
 Function : Sign in, Sign up, Sign out, Simple BBS(write, read, update, search, pagination), My page, Request deal and Accept
 
-@ 'delete' didn't implement because its concept.
+@ 'delete' don't implement because its concept.
