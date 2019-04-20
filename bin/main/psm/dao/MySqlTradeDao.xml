@@ -39,6 +39,14 @@
 		limit #{pageStart},#{rows}
 	</select>
 	
+	<select id="selectSearchList" parameterType="map" resultMap="tradeResultMap">
+		select tno,title,cre_date,id,price,tcon,state,tname
+		from trade
+		where title like CONCAT('%',#{keyword},'%') or content like CONCAT('%',#{keyword},'%')
+		order by tno desc
+		limit #{pageStart},#{rows}
+	</select>
+	
 	<insert id="insert" parameterType="trade">
 		insert into trade(title,cre_date,id,tname,price,tcon,state,content)
 		values(#{title},now(),#{id},#{tradeName},#{price},#{condition},0,#{content})

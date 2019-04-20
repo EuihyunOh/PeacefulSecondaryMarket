@@ -68,6 +68,22 @@ public class MySqlTradeDao implements TradeDao {
 		}
 	}
 
+	@Override
+	public List<Trade> selectSearchList(String keyword, PageCriteria page) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Hashtable<String,Object> paramMap = new Hashtable<String,Object>();
+		
+		try {
+			
+			paramMap.put("keyword", keyword);
+			paramMap.put("pageStart", page.getPageStart());
+			paramMap.put("rows",page.getRows());
+			return sqlSession.selectList("psm.dao.TradeDao.selectSearchList",paramMap);
+			
+		}finally {
+			sqlSession.close();
+		}
+	}	
 
 	@Override
 	public int insert(Trade trade) throws Exception {
@@ -172,6 +188,8 @@ public class MySqlTradeDao implements TradeDao {
 			sqlSession.close();
 		}
 	}
+
+	
 
 
 }

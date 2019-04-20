@@ -20,9 +20,9 @@
       <ul class="nav navbar-nav">
         <li><a href="<%=request.getContextPath()%>/trade/list.do">Trade Board</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" action="search.do" method="get">
         <div class="form-group">
-          <input type="text" id="search" class="form-control" placeholder="What do you want?">
+          <input type="text" id="search" name="search" class="form-control" placeholder="What do you want?" required>
         </div>
         <button type="submit" class="btn btn-default">Search</button>
       </form>
